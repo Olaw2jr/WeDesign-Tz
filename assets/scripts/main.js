@@ -18,10 +18,129 @@
     // All pages
     'common': {
       init: function() {
-        // JavaScript to be fired on all pages
+      // JavaScript to be fired on all pages
+
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
+
+        /* ======= Twitter Bootstrap hover dropdown ======= */   
+        /* Ref: https://github.com/CWSpear/bootstrap-hover-dropdown */ 
+        /* apply dropdownHover to all elements with the data-hover="dropdown" attribute */
+        
+        $('[data-hover="dropdown"]').dropdownHover();
+        
+        /* ======= jQuery Responsive equal heights plugin ======= */
+        /* Ref: https://github.com/liabru/jquery-match-height */
+        
+         $('#who .item-inner').matchHeight();    
+         $('#testimonials .item-inner .quote').matchHeight(); 
+         $('#latest-blog .item-inner').matchHeight(); 
+         $('#services .item-inner').matchHeight();
+         $('#team .item-inner').matchHeight();
+         
+        /* ======= jQuery Placeholder ======= */
+        /* Ref: https://github.com/mathiasbynens/jquery-placeholder */
+        
+        $('input, textarea').placeholder();         
+        
+        /* ======= jQuery FitVids - Responsive Video ======= */
+        /* Ref: https://github.com/davatron5000/FitVids.js/blob/master/README.md */    
+        $(".video-container").fitVids();   
+        
+      
+        /* ======= Fixed Header animation ======= */ 
+            
+        $(window).on('scroll', function() {
+             
+             if ($(window).scrollTop() > 80 ) {
+                 $('#header').addClass('header-shrink');
+             }
+             else {
+                 $('#header').removeClass('header-shrink');             
+             }
+        });
+
+        /* ======= Owl Carousel ======= */    
+        /* Ref: http://owlgraphic.com/owlcarousel/index.html */
+
+        $("#work-carousel").owlCarousel({
+                    
+            autoPlay : 6000,
+            stopOnHover : true,
+            paginationSpeed : 1000,
+            goToFirstSpeed : 40,
+            singleItem : true,
+            autoHeight : true 
+            
+        }); 
+
+        /* ======= Header Background Slideshow - Flexslider ======= */    
+        /* Ref: https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties */
+        
+        $('#bg-slider').flexslider({
+            animation: "fade",
+            directionNav: false, //remove the default direction-nav - https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties
+            controlNav: false, //remove the default control-nav
+            slideshowSpeed: 6000
+        });
+        
+        /* ======= Case Study Slideshow - Flexslider ======= */ 
+        //Ref: http://flexslider.woothemes.com/thumbnail-slider.html
+        // The slider being synced must be initialized first
+        $('#carousel').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            itemWidth: 180,
+            itemMargin: 5,
+            asNavFor: '#slider'
+        });
+        
+        $('#slider').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false,
+            sync: "#carousel"
+        });
+        
+        
+        $('#work-carousel').flexslider({
+            animation: "slide",
+            controlNav: false,
+            animationLoop: false,
+            slideshow: false
+        });
+
+        /* ======= Isotope plugin ======= */
+        /* Ref: http://isotope.metafizzy.co/ */
+        // init Isotope    
+        var $container = $('.isotope');
+        
+        $container.imagesLoaded(function () {
+          $('.isotope').isotope({
+              itemSelector: '.item'
+          });
+        });
+        
+        // filter items on button click
+        $('#filters').on( 'click', 'button', function() {
+          var filterValue = $(this).attr('data-filter');
+          $container.isotope({ filter: filterValue });
+        });
+        
+        // change is-checked class on buttons
+        $('.button-group').each( function( i, buttonGroup ) {
+          var $buttonGroup = $( buttonGroup );
+          $buttonGroup.on( 'click', 'button', function() {
+            $buttonGroup.find('.is-checked').removeClass('is-checked');
+            $( this ).addClass('is-checked');
+          });
+        });
+
+        
       }
     },
     // Home page

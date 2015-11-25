@@ -14,7 +14,9 @@ $sage_includes = [
   'lib/extras.php',  // Custom functions
   'lib/setup.php',   // Theme setup
   'lib/titles.php',  // Page titles
-  'lib/wrapper.php'  // Theme wrapper class
+  'lib/wrapper.php',  // Theme wrapper class
+  'lib/navwalker.php',  // Bootstrap navwalker
+  'lib/cpt.php'   //Custom Post type
 ];
 
 foreach ($sage_includes as $file) {

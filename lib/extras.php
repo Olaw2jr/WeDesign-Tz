@@ -31,3 +31,16 @@ function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+/**
+* Add Classes according to the page opened
+*/
+function container_class() {
+  if (is_front_page() ) {
+    return 'header-wrapper-home';
+  } elseif (is_home() || is_page()) {
+    return 'header-wrapper-page';
+  } else {
+    return 'no-header-wrapper';
+  }
+}
