@@ -20,7 +20,7 @@
         <div class="content-wrapper col-md-10 col-sm-9 col-xs-12">
             <figure class="figure">
                 <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail( 'post-thumbnails', array( 'alt' => get_the_title() ) ); ?>
+                    <?php the_post_thumbnail( 'post-thumbnails', array( 'class' => 'img-responsive', 'alt' => get_the_title() ) ); ?>
                 </a>
             </figure>
             <div class="content">

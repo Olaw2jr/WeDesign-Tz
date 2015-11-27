@@ -131,33 +131,22 @@
     </div><!--//modal-dialog-->
 </div><!--//modal-->
 
-<!-- Main Javascript -->          
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+    <!-- Main Javascript -->   
+    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-1.11.3.min.js"></script>  
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/back-to-top.js"></script>             
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>                                                                  
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/FitVids/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/main.js"></script>
     
-    <!-- Flexslider -->    
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/flexslider/jquery.flexslider-min.js"></script> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/flexslider-custom.js"></script>     
+    <!-- Flexslider --> 
+    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/flexslider-custom.js"></script> 
     
     <!-- Form Validation -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery.validate.min.js"></script> 
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/form-validation-custom.js"></script>
-    
-    <!-- Form iOS fix -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/isMobile/isMobile.min.js"></script>
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/form-mobile-fix.js"></script>
-    
-    <!-- Owl Carousel -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/owl-carousel/owl.carousel.js"></script> 
+
+    <!-- Owl Carousel --> 
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/owl-custom.js"></script> 
 
     <!-- isotope -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/imagesloaded.pkgd.min.js"></script> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/isotope.pkgd.min.js"></script>    
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/isotope-custom.js"></script>
+
+    <!-- Google Map -->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/map.js"></script>
