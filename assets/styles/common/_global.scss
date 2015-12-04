@@ -266,22 +266,8 @@ select {
 		.slide {
 			display: block;
 			height: 650px;
-			&.slide-1 {
-				background: $color_pale_sky_approx $url_0 no-repeat 50% top;
-				-webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-			}
-			&.slide-2 {
-				background: $color_pale_sky_approx $url_1 no-repeat 50% top;
-				-webkit-background-size: cover;
-				-moz-background-size: cover;
-				-o-background-size: cover;
-				background-size: cover;
-			}
-			&.slide-3 {
-				background: $color_pale_sky_approx $url_2 no-repeat 50% top;
+			&.slide {
+				//Over written in inline css.. background: $color_pale_sky_approx $url_0 no-repeat 50% top;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
 				-o-background-size: cover;

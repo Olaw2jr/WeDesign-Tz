@@ -1,8 +1,10 @@
 <?php
   use Roots\Sage\Extras;
+
+  $page_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID));
 ?>
 
-<div class="header-wrapper <?= Extras\container_class(); ?>" style="background:  #65758e url('<?= get_template_directory_uri(); ?>/dist/images/background/heading-background-1.jpg') no-repeat 50% top;">
+<div class="header-wrapper <?= Extras\container_class(); ?>" style="background:  #65758e url('<?= $page_image ?>') no-repeat 50% top;">
   <!-- ******HEADER****** --> 
   <header id="header" class="header navbar-fixed-top">  
       <div class="container">       
@@ -42,9 +44,22 @@
   <div class="bg-slider-wrapper">
     <div id="bg-slider" class="flexslider bg-slider">
       <ul class="slides">
-        <li class="slide slide-1"></li>
+
+        <?php if( class_exists('Dynamic_Featured_Image') ) {
+          global $dynamic_featured_image;
+          $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
+
+          if( !is_null($featuredImages) ){
+            foreach($featuredImages as $images) { ?>
+              <li class="slide img-responsive" style="background: #65758e url('<?= $images['full'] ?>') no-repeat 50% top;"></li>                                       
+           <?php }
+          }
+         } ?>
+
+        
+        <!-- <li class="slide slide-1"></li>
         <li class="slide slide-2"></li>
-        <li class="slide slide-3"></li>
+        <li class="slide slide-3"></li> -->
       </ul>
     </div>
   </div><!--//bg-slider-wrapper--> 

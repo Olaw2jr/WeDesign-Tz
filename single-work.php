@@ -29,64 +29,39 @@
                     <section class="slideshow">
                         <div id="slider" class="flexslider">
                             <ul class="slides">
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-0.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-1.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-2.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-3.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-4.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-5.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-6.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-7.png" alt="" />
-                                </li>
-                                <li>
-                                    <img class="img-responsive" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-8.png" alt="" />
-                                </li>
+
+                                <?php if( class_exists('Dynamic_Featured_Image') ) {
+                                     global $dynamic_featured_image;
+                                     $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
+
+                                    if( !is_null($featuredImages) ){
+                                       foreach($featuredImages as $images) { ?>
+                                            <li>
+                                                <img class="img-responsive" src="<?= $images['full'] ?>" alt="<?= $dynamic_featured_image->get_image_alt_by_id($images['attachment_id']) ?>" />
+                                            </li>                                          
+                                       <?php }
+                                    }
+                                 } ?>
+
                             </ul>
                         </div>
                         <div id="carousel" class="flexslider">
                             <ul class="slides">
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-0.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-1.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-2.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-3.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-4.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-5.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-6.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-7.jpg" alt="" />
-                                </li>
-                                <li>
-                                    <img src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/work/case-study-thumb-8.jpg" alt="" />
-                                </li>
+
+                                <?php if( class_exists('Dynamic_Featured_Image') ) {
+                                     global $dynamic_featured_image;
+                                     $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
+
+                                    if( !is_null($featuredImages) ){
+                                       foreach($featuredImages as $images) { ?>
+                                            <li>
+                                                <img src="<?= $images['thumb'] ?>" alt="<?= $dynamic_featured_image->get_image_alt_by_id($images['attachment_id']) ?>" />
+                                            </li>                                          
+                                       <?php }
+                                    }
+                                 } ?>
+
+                                
                             </ul>
                         </div>
                     </section><!--//slideshow-->
