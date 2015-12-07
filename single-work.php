@@ -1,3 +1,7 @@
+<div class="breadcrumbs container">
+    <?php Roots\Sage\Extras\breadcrumbs(); ?>
+</div><!--//breadcrumbs-->
+
 <article class="case-study-article article">
     <div class="container">
                     
@@ -98,7 +102,8 @@
                             </div><!--//profile-->
                         </div><!--//meta-->     
                     </div><!--//testimonial-inner-->   
-                </div><!--//testimonail-->                                            
+                </div><!--//testimonail--> 
+                                                           
             </div><!--//content-wrapper-->              
         </div><!--//row-->            
     </div><!--//container-->
