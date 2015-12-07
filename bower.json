@@ -39,12 +39,7 @@
         "./assets/javascripts/bootstrap/popover.js",
         "./assets/javascripts/bootstrap/scrollspy.js",
         "./assets/javascripts/bootstrap/tab.js",
-        "./assets/javascripts/bootstrap/affix.js",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
-        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+        "./assets/javascripts/bootstrap/affix.js"
       ]
     },
     "font-awesome": {
@@ -63,7 +58,8 @@
     "flexslider-scss": {
       "main": [
         "./jquery.flexslider.js",
-        "./flexslider.scss"
+        "./flexslider.scss",
+        "./fonts/*"
       ]
     },
     "matchHeight": {
