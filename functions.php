@@ -16,7 +16,8 @@ $sage_includes = [
   'lib/titles.php',  // Page titles
   'lib/wrapper.php',  // Theme wrapper class
   'lib/navwalker.php',  // Bootstrap navwalker
-  'lib/cpt.php'   //Custom Post type
+  'lib/cpt.php',   //Custom Post type
+  'lib/widget.php'  //Custom Widgets for Sage
 ];
 
 foreach ($sage_includes as $file) {
