@@ -475,37 +475,66 @@ class ContactInfoWidget extends WP_Widget {
  		// if they specify a title, give a title, if not we set it for them
  		if ( $title ) {
     	echo $before_title . $title . $after_title;
-    }else {
-    	echo $before_title . "Contact Information" . $after_title;
-    }
-    
-    //name of the person
-    if ($fullname != ""){
-    	echo "<p><strong>$fullname</strong></p>";
-    }
-    
-    //email address, making sure that it's obfuscated    
-    if ($email != ""){  
-    	$email = antispambot($email);          
-			echo "<p><strong>Email:</strong><br/>";
-			echo "<a href=\"mailto:$email\">$email</a></p>";
-		}
-		
-		//phone number
-		if ($phone != ""){ 
-			echo "<p><strong>Phone:</strong><br/>$phone</p>";
-		}
-				
-		//Office Location
-		if ($location != ""){
-			echo "<p><strong>Address:</strong><br/>$location</p>";
-		}
-		
-		//Office Hours
-		if ($hours != ""){
-			echo "<p><strong>Office Hours:</strong><br/>$hours</p>";
-		}
-		
+	    }else {
+	    	echo $before_title . "Contact Information" . $after_title;
+	    } ?>
+	    
+	    <div class="row">
+            <p class="adr clearfix col-md-12 col-sm-4">
+                <span class="fs1" aria-hidden="true" data-icon="&#xe01d;"></span>        
+                <span class="adr-group">
+                <?php  
+                	//Street Aaddress
+					if ($street_address != ""){
+						echo "<span class='street-address'>$street_address</span><br />";
+					}     
+
+                    //Office Location
+					if ($city != ""){
+						echo "<span class='city'>$city</span><br />";
+					}
+
+                    //Postal Code
+					if ($postal_code != ""){
+						echo "<span class='postal-code'>$postal_code</span><br />";
+					}
+
+                    //Country Name
+					if ($country_name != ""){
+						echo "<span class='country-name'>$country_name</span>";
+					}
+                ?>    
+                </span>
+            </p>
+            <?php
+            	//phone number
+				if ($phone != ""){ 
+					echo "<p class='tel col-md-12 col-sm-4'>
+		            	<span class='fs1' aria-hidden='true' data-icon='&#x77;''></span>
+		            	<a href='tel:$phone'>$phone</a>
+		            </p>";
+				}
+             
+            	//email address, making sure that it's obfuscated    
+			    if ($email != ""){  
+		    	$email = antispambot($email);          
+					echo "<p class='email col-md-12 col-sm-4'>
+		            	<span class='fs1' aria-hidden='true' data-icon='&#xe010;''></span>
+		            	<a href=\'mailto:$email\'>$email</a>
+		            </p>";
+				} 
+			?>
+             
+            <ul class="social-icons list-inline">
+                <li><a href="https://twitter.com/3rdwave_themes"><i class="fa fa-twitter"></i></a></li>                        
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.facebook.com/3rdwavethemes"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li class="last"><a href="#"><i class="fa fa-google-plus"></i></a></li>                     
+            </ul> 
+        </div> 
+
+		<?php	
 		//WP after widget cleanup
 		echo $after_widget; 
     }
@@ -513,43 +542,49 @@ class ContactInfoWidget extends WP_Widget {
     function update($new_instance, $old_instance) {				
 		$instance = $old_instance;
 		$instance['title']            = strip_tags($new_instance['title']           );
-		$instance['fullname']         = strip_tags($new_instance['fullname']        );
-		$instance['contact-email']    = strip_tags($new_instance['contact-email']   );
-		$instance['phone']            = strip_tags($new_instance['phone']           );
-		$instance['office-hours']     = strip_tags($new_instance['office-hours']    );
-		$instance['office-location']  = strip_tags($new_instance['office-location'] );
+		$instance['street_address']         = strip_tags($new_instance['street_address']        );
+		$instance['city']    = strip_tags($new_instance['city']   );
+		$instance['postal_code']            = strip_tags($new_instance['postal_code']           );
+		$instance['country_name']     = strip_tags($new_instance['country_name']    );
+		$instance['contact-email']  = strip_tags($new_instance['contact-email'] );
+		$instance['phone']  = strip_tags($new_instance['phone'] );
    	    return $instance;
     }
     /** @see WP_Widget::form   this function renders the form that users see in Appearence -> Widgets*/
     function form($instance) {				
         //clean up those variables
         $title    = esc_attr($instance['title']           );
-        $fullname = esc_attr($instance['fullname']        );
-        $email    = esc_attr($instance['contact-email']   );
-        $phone    = esc_attr($instance['phone']           );
-        $hours    = esc_attr($instance['office-hours']    );
-        $location = esc_attr($instance['office-location'] );
+        $street_address = esc_attr($instance['street_address']        );
+        $city   = esc_attr($instance['city']   );
+        $postal_code   = esc_attr($instance['postal_code']           );
+        $country_name   = esc_attr($instance['country_name']    );
+        $email = esc_attr($instance['contact-email'] );
+        $phone = esc_attr($instance['phone'] );
         ?>
+        
         <p>
           <small><em>All fields are optional, if left blank, they will not display anything</em></small></p>
         <p>
           <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Widget Title:'); ?></label> 
           <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
         </p><p>  
-          <label for="<?php echo $this->get_field_id('fullname'); ?>"><?php _e('Name:'); ?></label> 
-          <input class="widefat" id="<?php echo $this->get_field_id('fullname'); ?>" name="<?php echo $this->get_field_name('fullname'); ?>" type="text" value="<?php echo $fullname; ?>" />
+          <label for="<?php echo $this->get_field_id('street_address'); ?>"><?php _e('Street Address:'); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id('street_address'); ?>" name="<?php echo $this->get_field_name('street_address'); ?>" type="text" value="<?php echo $street_address; ?>" />
         </p><p>
-          <label for="<?php echo $this->get_field_id('contact-email'); ?>"><?php _e('Email:'); ?></label> 
+          <label for="<?php echo $this->get_field_id('city'); ?>"><?php _e('City:'); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id('city'); ?>" name="<?php echo $this->get_field_name('city'); ?>" type="text" value="<?php echo $city; ?>" />
+        </p><p>  
+          <label for="<?php echo $this->get_field_id('postal_code'); ?>"><?php _e('Postal Code:'); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id('postal_code'); ?>" name="<?php echo $this->get_field_name('postal_code'); ?>" type="text" value="<?php echo $postal_code; ?>" />
+        </p><p>  
+          <label for="<?php echo $this->get_field_id('country_name'); ?>"><?php _e('Country Name:'); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id('country_name'); ?>" name="<?php echo $this->get_field_name('country_name'); ?>" type="text" value="<?php echo $country_name; ?>" />
+        </p><p>  
+          <label for="<?php echo $this->get_field_id('contact-email'); ?>"><?php _e('Contact Email'); ?></label> 
           <input class="widefat" id="<?php echo $this->get_field_id('contact-email'); ?>" name="<?php echo $this->get_field_name('contact-email'); ?>" type="text" value="<?php echo $email; ?>" />
-        </p><p>  
-          <label for="<?php echo $this->get_field_id('phone'); ?>"><?php _e('Phone:'); ?></label> 
-          <textarea id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" ><?php echo $phone; ?></textarea>
-        </p><p>  
-          <label for="<?php echo $this->get_field_id('office-location'); ?>"><?php _e('Office Location:'); ?></label> 
-          <textarea id="<?php echo $this->get_field_id('office-location'); ?>" name="<?php echo $this->get_field_name('office-location'); ?>" ><?php echo $location; ?></textarea>
-        </p><p>  
-          <label for="<?php echo $this->get_field_id('office-hours'); ?>"><?php _e('Office Hours: <small><em>(line breaks are preserved)</em></small>'); ?></label> 
-          <textarea id="<?php echo $this->get_field_id('office-hours'); ?>" name="<?php echo $this->get_field_name('office-hours'); ?>" ><?php echo $hours; ?></textarea>
+        </p><p>
+          <label for="<?php echo $this->get_field_id('city'); ?>"><?php _e('Phone:'); ?></label> 
+          <input class="widefat" id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" type="text" value="<?php echo $phone; ?>" />
         </p>
         <?php 
     }
