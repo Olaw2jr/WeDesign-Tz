@@ -444,9 +444,11 @@ add_action('widgets_init', create_function('', 'return register_widget("Sage_Arc
 class ContactInfoWidget extends WP_Widget {
     
     /** constructor */
-    function ContactInfoWidget() {
-        parent::WP_Widget(false, $name = 'Contact Information');	
-    }
+    public function __construct() {
+		$widget_ops = array('classname' => 'contact-col', 'description' => __( 'Contact infomation for Sage Web Agency.') );
+		parent::__construct('ContactInfo', __(' Sage Contact Information'), $widget_ops);
+	}
+
     /** @see WP_Widget::widget this function is where the widget is rendered*/
     function widget($args, $instance) {		
         extract( $args );
@@ -458,16 +460,6 @@ class ContactInfoWidget extends WP_Widget {
         $country_name = $instance['country_name'];
         $email    = $instance['contact-email'];
         $phone    = nl2br($instance['phone']);
-
-        /*
-	        street-address
-	        city
-	        postal-code
-	        country-name
-
-	        phone
-	        email
-        */
 
         //start actual rendering of widget data
         echo $before_widget; 
