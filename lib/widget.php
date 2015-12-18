@@ -583,3 +583,318 @@ class ContactInfoWidget extends WP_Widget {
 } // end class ContactInfoWidget
 // register ContactInfoWidget widget
 add_action('widgets_init', create_function('', 'return register_widget("ContactInfoWidget");'));
+
+
+/**
+ * Footer Latest_Posts widget class
+ *
+ * @since 2.8.0
+ */
+class Sage_Latest_Posts extends WP_Widget {
+
+	public function __construct() {
+		$widget_ops = array('classname' => 'blog-col', 'description' => __( "Your site&#8217;s most recent Posts.") );
+		parent::__construct('latest-posts', __('Sage Footer Latest Posts'), $widget_ops);
+		$this->alt_option_name = 'latest-posts';
+
+		add_action( 'save_post', array($this, 'flush_widget_cache') );
+		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
+		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
+	}
+
+	/**
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		$cache = array();
+		if ( ! $this->is_preview() ) {
+			$cache = wp_cache_get( 'widget_latest_posts', 'widget' );
+		}
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		if ( ! isset( $args['widget_id'] ) ) {
+			$args['widget_id'] = $this->id;
+		}
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+			echo $cache[ $args['widget_id'] ];
+			return;
+		}
+
+		ob_start();
+
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Latest Posts' );
+
+		/** This filter is documented in wp-includes/default-widgets.php */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
+		if ( ! $number )
+			$number = 5;
+		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+
+		/**
+		 * Filter the arguments for the Recent Posts widget.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @see WP_Query::get_posts()
+		 *
+		 * @param array $args An array of arguments used to retrieve the recent posts.
+		 */
+		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
+			'posts_per_page'      => $number,
+			'no_found_rows'       => true,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true
+		) ) );
+
+		if ($r->have_posts()) :
+?>
+		<?php echo $args['before_widget']; ?>
+		<?php if ( $title ) {
+			echo $args['before_title'] . $title . $args['after_title'];
+		} ?>
+		
+		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
+			
+			<div class="item">
+	            <figure class="figure">
+	                <?php the_post_thumbnail('thumb', array('class' => 'img-responsive')); ?>
+	            </figure>
+	            <div class="content">
+	                <h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h4>
+	                <p class="intro">Mauris libero leo, dapibus a congue ut, mollis sed nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus augue nec nulla ultricies...</p>
+	                <ul class="meta list-inline">
+		                <?php if ( $show_date ) : ?>
+		                    <li><?php echo get_the_date(); ?></li>
+		                <?php endif; ?>
+	                    <li>Vincent Fowler</li>
+	                </ul>
+	            </div><!--//content-->
+	        </div> 
+
+		<?php endwhile; ?>
+		
+		<?php echo $args['after_widget']; ?>
+<?php
+		// Reset the global $the_post as this query will have stomped on it
+		wp_reset_postdata();
+
+		endif;
+
+		if ( ! $this->is_preview() ) {
+			$cache[ $args['widget_id'] ] = ob_get_flush();
+			wp_cache_set( 'widget_latest_posts', $cache, 'widget' );
+		} else {
+			ob_end_flush();
+		}
+	}
+
+	/**
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 * @return array
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['number'] = (int) $new_instance['number'];
+		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset($alloptions['widget_latest_entries']) )
+			delete_option('widget_latest_entries');
+
+		return $instance;
+	}
+
+	/**
+	 * @access public
+	 */
+	public function flush_widget_cache() {
+		wp_cache_delete('widget_latest_posts', 'widget');
+	}
+
+	/**
+	 * @param array $instance
+	 */
+	public function form( $instance ) {
+		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+?>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+
+		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+<?php
+	}
+}
+
+// register Sage_Latest_Posts widget
+add_action('widgets_init', create_function('', 'return register_widget("Sage_Latest_Posts");'));
+
+
+/**
+ * Widget API: WP_Footer_Menu_Widget class
+ *
+ * @package WordPress
+ * @subpackage Widgets
+ * @since 4.4.0
+ */
+
+/**
+ * Core class used to implement the Custom Menu widget.
+ *
+ * @since 3.0.0
+ *
+ * @see WP_Widget
+ */
+ class WP_Footer_Menu_Widget extends WP_Widget {
+
+	/**
+	 * Sets up a new Custom Menu widget instance.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 */
+	public function __construct() {
+		$widget_ops = array( 'description' => __('Add a footer custom menu to your sidebar.') );
+		parent::__construct( 'nav_menu', __('Footer Custom Menu'), $widget_ops );
+	}
+
+	/**
+	 * Outputs the content for the current Custom Menu widget instance.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 *
+	 * @param array $args     Display arguments including 'before_title', 'after_title',
+	 *                        'before_widget', and 'after_widget'.
+	 * @param array $instance Settings for the current Custom Menu widget instance.
+	 */
+	public function widget( $args, $instance ) {
+		// Get menu
+		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
+
+		if ( !$nav_menu )
+			return;
+
+		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+
+		echo $args['before_widget'];
+
+		if ( !empty($instance['title']) )
+			echo $args['before_title'] . $instance['title'] . $args['after_title'];
+
+		$nav_menu_args = array(
+			'fallback_cb' => '',
+			'menu'        => $nav_menu,
+			'container'   => false,
+			'menu_class'      => 'list-unstyled'
+		);
+
+		/**
+		 * Filter the arguments for the Custom Menu widget.
+		 *
+		 * @since 4.2.0
+		 * @since 4.4.0 Added the `$instance` parameter.
+		 *
+		 * @param array    $nav_menu_args {
+		 *     An array of arguments passed to wp_nav_menu() to retrieve a custom menu.
+		 *
+		 *     @type callable|bool $fallback_cb Callback to fire if the menu doesn't exist. Default empty.
+		 *     @type mixed         $menu        Menu ID, slug, or name.
+		 * }
+		 * @param stdClass $nav_menu      Nav menu object for the current menu.
+		 * @param array    $args          Display arguments for the current widget.
+		 * @param array    $instance      Array of settings for the current widget.
+		 */
+		wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );
+
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Handles updating settings for the current Custom Menu widget instance.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 *
+	 * @param array $new_instance New settings for this instance as input by the user via
+	 *                            WP_Widget::form().
+	 * @param array $old_instance Old settings for this instance.
+	 * @return array Updated settings to save.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		if ( ! empty( $new_instance['title'] ) ) {
+			$instance['title'] = sanitize_text_field( stripslashes( $new_instance['title'] ) );
+		}
+		if ( ! empty( $new_instance['nav_menu'] ) ) {
+			$instance['nav_menu'] = (int) $new_instance['nav_menu'];
+		}
+		return $instance;
+	}
+
+	/**
+	 * Outputs the settings form for the Custom Menu widget.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 *
+	 * @param array $instance Current settings.
+	 */
+	public function form( $instance ) {
+		$title = isset( $instance['title'] ) ? $instance['title'] : '';
+		$nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
+
+		// Get menus
+		$menus = wp_get_nav_menus();
+
+		// If no menus exists, direct the user to go and create some.
+		?>
+		<p class="nav-menu-widget-no-menus-message" <?php if ( ! empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+			<?php
+			if ( isset( $GLOBALS['wp_customize'] ) && $GLOBALS['wp_customize'] instanceof WP_Customize_Manager ) {
+				$url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
+			} else {
+				$url = admin_url( 'nav-menus.php' );
+			}
+			?>
+			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
+		</p>
+		<div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ) ?></label>
+				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+				<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
+					<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+					<?php foreach ( $menus as $menu ) : ?>
+						<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
+							<?php echo esc_html( $menu->name ); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+			</p>
+		</div>
+		<?php
+	}
+}
+
+// register WP_Footer_Menu Widget
+add_action('widgets_init', create_function('', 'return register_widget("WP_Footer_Menu_Widget");'));

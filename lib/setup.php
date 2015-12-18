@@ -67,14 +67,48 @@ function widgets_init() {
     'after_title'   => '</h3>'
   ]);
 
-  register_sidebar([
+  /* register_sidebar([
     'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<div class="footer-col col-md-3 col-sm-4 %1$s %2$s"> <div class="footer-col-inner">',
     'after_widget'  => '</div> </div>',
     'before_title'  => '<h3 class="sub-title">',
     'after_title'   => '</h3>'
+  ]); */
+
+  // First footer widget area, located in the footer. Empty by default.
+  register_sidebar([
+    'name'          => __( 'First Footer', 'sage' ),
+    'id'            => 'first-footer',
+    'description'   => __( 'The first footer widget area', 'sage' ),
+    'before_widget' => '<div class="footer-col col-md-3 col-sm-4  %1$s %2$s"> <div class="footer-col-inner">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<h3 class="sub-title">',
+    'after_title'   => '</h3>',
   ]);
+
+  // Second Footer Widget Area, located in the footer. Empty by default.
+  register_sidebar([
+    'name'          => __( 'Second Footer', 'sage' ),
+    'id'            => 'second-footer',
+    'description'   => __( 'The second footer widget area', 'sage' ),
+    'before_widget' => '<div class="footer-col col-md-6 col-sm-8  %1$s %2$s"> <div class="footer-col-inner">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<h3 class="sub-title">',
+    'after_title'   => '</h3>',
+  ]);
+
+  // Third Footer Widget Area, located in the footer. Empty by default.
+  register_sidebar([
+    'name'          => __( 'Third Footer', 'sage' ),
+    'id'            => 'third-footer',
+    'description'   => __( 'The third footer widget area', 'sage' ),
+    'before_widget' => '<div class="footer-col col-md-3 col-sm-4  %1$s %2$s"> <div class="footer-col-inner">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<h3 class="sub-title">',
+    'after_title'   => '</h3>',
+  ]);
+
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
 

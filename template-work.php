@@ -47,8 +47,7 @@ query_posts('post_type=work&posts_per_page=6');
                     <div class="item-inner">
                         <figure class="figure">
                             <a href="<?php the_permalink(); ?>">
-                                <img class="img-responsive" src="<?= get_template_directory_uri(); ?>/dist/images/work/work-example-thumb-1.jpg" alt="" />
-                                <?php //the_post_thumbnail('', array('class' => 'img-responsive')); ?>
+                                <?php the_post_thumbnail('', array('class' => 'img-responsive')); ?>
                             </a>
                             <a class="info-mask" href="<?php the_permalink(); ?>">
                                 <span class="desc">Project intro goes here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor...</span>

@@ -9,7 +9,7 @@
     <div class="container">
         <ul class="contact-info list-inline text-center">
             <li class="tel"><span class="fs1" aria-hidden="true" data-icon="&#x77;"></span><br /> <a href="%2b0800123456.html">0800 123 4567</a></li>
-            <li class="email"><span class="fs1" aria-hidden="true" data-icon="&#xe010;"></span><br /> <a href="#">hello@yourdevstudio.com</a></li>
+            <li class="email"><span class="fs1" aria-hidden="true" data-icon="&#xe010;"></span><br /> <a href="#">hello@wedesign.co.tz</a></li>
         </ul>
         <form id="contact-form" class="contact-form form" method="post" action="#">                    
             <div class="row text-center">
