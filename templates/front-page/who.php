@@ -41,6 +41,6 @@
                 </div><!--//item-inner-->              
             </div><!--//item-->
         </div><!--//row-->
-        <a class="btn btn-cta btn-cta-secondary" href="about.html">More about us</a>
+        <a class="btn btn-cta btn-cta-secondary" href="<?= esc_url(home_url('/about')); ?>">More about us</a>
     </div><!--//container-->
 </section><!--//who-->

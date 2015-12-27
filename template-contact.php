@@ -7,6 +7,9 @@
 <!-- ******Contact Section****** --> 
 <section class="contact-section section">
     <div class="container">
+        <h2 class="title text-center">Start your project today</h2>
+            <p class="intro text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet tortor consequat nisi scelerisque commodo etiam justo sapien.</p>
+            
         <ul class="contact-info list-inline text-center">
             <li class="tel"><span class="fs1" aria-hidden="true" data-icon="&#x77;"></span><br /> <a href="%2b0800123456.html">0800 123 4567</a></li>
             <li class="email"><span class="fs1" aria-hidden="true" data-icon="&#xe010;"></span><br /> <a href="#">hello@wedesign.co.tz</a></li>

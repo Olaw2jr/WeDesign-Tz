@@ -36,7 +36,7 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
   set_post_thumbnail_size( 800, 300, true );
-  add_image_size('post-thumb', 80, 80, true);
+  add_image_size('post-thumb', 60, 60, true);
   add_image_size('page-header', 1600, 400, true );
   add_image_size('work-thumbnail', 1184, 724, true);
 

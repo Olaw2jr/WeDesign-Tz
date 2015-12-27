@@ -78,8 +78,7 @@ class Sage_Recent_Posts extends WP_Widget {
 		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 			
 			<li>
-				<?php the_post_thumbnail('thumb', array('class' => 'thumb img-responsive')); ?>
-		        <!-- <img class="thumb img-responsive" src="<?= get_template_directory_uri(); ?>/dist/images/blog/blog-tiny-thumb-1.jpg" alt="" /> -->
+				<?php the_post_thumbnail('post-thumb', array('class' => 'img-responsive')); ?>
 		        <span class="post-info">
 		            <a class="post-title" href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a><br />
 		            <?php if ( $show_date ) : ?>
@@ -664,16 +663,16 @@ class Sage_Latest_Posts extends WP_Widget {
 			
 			<div class="item">
 	            <figure class="figure">
-	                <?php the_post_thumbnail('thumb', array('class' => 'img-responsive')); ?>
+	                <?php the_post_thumbnail('post-thumb', array('class' => 'img-responsive')); ?>
 	            </figure>
 	            <div class="content">
 	                <h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h4>
-	                <p class="intro">Mauris libero leo, dapibus a congue ut, mollis sed nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus augue nec nulla ultricies...</p>
+	                <p class="intro"><?php //get_the_excerpt(); ?></p>
 	                <ul class="meta list-inline">
 		                <?php if ( $show_date ) : ?>
 		                    <li><?php echo get_the_date(); ?></li>
 		                <?php endif; ?>
-	                    <li>Vincent Fowler</li>
+	                    <li><?= get_the_author(); ?></li>
 	                </ul>
 	            </div><!--//content-->
 	        </div> 

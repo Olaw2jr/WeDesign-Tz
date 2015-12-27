@@ -45,7 +45,12 @@
                                             </li>                                          
                                        <?php }
                                     }
-                                 } ?>
+                                 }
+                                 else
+
+                                    the_post_thumbnail('work-thumbnail', array('class' => 'img-responsive'));
+
+                                  ?>
 
                             </ul>
                         </div>
@@ -85,24 +90,6 @@
                 </div><!--//content-->  
             <?php endwhile; endif; ?>    
                 
-                <div class="testimonial-wrapper text-center">
-                    <div class="testimonial-inner">
-                        <div class="quote-container text-left">
-                            <i class="fa fa-quote-left"></i> 
-                            <blockquote class="quote">We had great experience working with Phasellus ut cursus tellus. Etiam ullamcorper varius diam, nec consequat dolor gravida non. Nullam commodo feugiat arcu, ut scelerisque nisl vulputate eget. Cras a euismod elit. Ut ex neque, cursus vulputate facilisis sed, tempor quis ligula. Pellentesque sodales sagittis fringilla.
-                                
-                            </blockquote><!--//quote-->                              
-                        </div><!--//quote-->
-                        <div class="meta">
-                            <div class="profile">
-                                <img class="img-circle" src="<?= get_template_directory_uri(); ?>/dist/images/client/client-profile-6.png" alt="" />
-                                <p class="name">Christopher Hopkins<br />
-                                <span class="source-title">Product Manager</span>
-                                </p>
-                            </div><!--//profile-->
-                        </div><!--//meta-->     
-                    </div><!--//testimonial-inner-->   
-                </div><!--//testimonail--> 
                                                            
             </div><!--//content-wrapper-->              
         </div><!--//row-->            
