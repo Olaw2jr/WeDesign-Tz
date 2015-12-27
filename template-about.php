@@ -8,8 +8,9 @@
 <section id="team" class="team section">
     <div class="container">
         <h2 class="title text-center">Meet the team</h2>
-            <p class="intro text-center">In vehicula accumsan vestibulum. Sed convallis massa ac nisi sodales, ac commodo nibh eleifend. Vivamus at vestibulum quam. Vivamus feugiat elit et elit viverra, et euismod lorem tincidunt. Suspendisse pharetra feugiat magna.</p>
+        <p class="intro text-center"><?php get_the_excerpt(); ?></p>
 
+        <?php while (have_posts())  : the_post(); ?>  
         <div class="row">
 
             <?php // The Query
@@ -47,5 +48,7 @@
             ?>
 
         </div><!--//row-->
+
+        <?php endwhile; ?>
     </div><!--//container-->
 </section><!--//team-section-->

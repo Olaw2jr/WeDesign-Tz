@@ -35,10 +35,12 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
-  set_post_thumbnail_size( 800, 300, true );
-  add_image_size('post-thumb', 60, 60, true);
-  add_image_size('page-header', 1600, 400, true );
-  add_image_size('work-thumbnail', 1184, 724, true);
+  set_post_thumbnail_size( 800, 300, false );
+  add_image_size( 'post-thumb', 60, 60, false );
+  add_image_size( 'page-header', 1600, 400, false );
+  add_image_size( 'work-thumbnail', 1184, 724, false );
+  add_image_size( 'client-thumb', 200, 85, false );
+  add_image_size( 'client-thumb2', 270, 125, false );
 
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats

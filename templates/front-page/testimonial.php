@@ -32,7 +32,7 @@
                             </p>
                         </div><!--//profile-->
                         <div class="client-logo">
-                            <?php the_post_thumbnail('', array('class' => 'img-responsive') ); ?>
+                            <?php the_post_thumbnail('client-thumb', array('class' => 'img-responsive') ); ?>
                         </div><!--//client-logo-->
                     </div><!--//meta-->        
                 </div><!--//item-inner-->        
