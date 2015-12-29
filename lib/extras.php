@@ -190,3 +190,11 @@ function breadcrumbs() {
 
   }
 } // end sage_breadcrumbs()
+
+/**
+ * Function that validates a field's length in contact page.
+ */
+function sage_validate_length( $fieldValue, $minLength ) {
+  // First, remove trailing and leading whitespace
+  return ( strlen( trim( $fieldValue ) ) > $minLength );
+}

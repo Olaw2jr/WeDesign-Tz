@@ -67,14 +67,11 @@
 </div><!--//modal-->
 
     <!-- Main Javascript -->   
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-1.11.3.min.js"></script>  
+    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/back-to-top.js"></script>             
     
     <!-- Flexslider --> 
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/flexslider-custom.js"></script> 
-    
-    <!-- Form Validation -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/form-validation-custom.js"></script>
 
     <!-- Owl Carousel --> 
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/owl-custom.js"></script> 
