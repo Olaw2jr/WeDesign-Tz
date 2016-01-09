@@ -44,18 +44,7 @@
   <div class="bg-slider-wrapper">
     <div id="bg-slider" class="flexslider bg-slider">
       <ul class="slides">
-
-        <?php if( class_exists('Dynamic_Featured_Image') ) {
-          global $dynamic_featured_image;
-          $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
-
-          if( !is_null($featuredImages) ){
-            foreach($featuredImages as $images) { ?>
-              <li class="slide img-responsive" style="background: #65758e url('<?= $images['full'] ?>') no-repeat 50% top;"></li>                                       
-           <?php }
-          }
-         } ?>
-         
+        <li class="slide" style="background: #65758e url('<?= $page_image ?>') no-repeat 50% top;"></li> 
       </ul>
     </div>
   </div><!--//bg-slider-wrapper--> 

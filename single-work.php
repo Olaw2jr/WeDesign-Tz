@@ -33,44 +33,7 @@
                     <section class="slideshow">
                         <div id="slider" class="flexslider">
                             <ul class="slides">
-
-                                <?php if( class_exists('Dynamic_Featured_Image') ) {
-                                     global $dynamic_featured_image;
-                                     $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
-
-                                    if( !is_null($featuredImages) ){
-                                       foreach($featuredImages as $images) { ?>
-                                            <li>
-                                                <img class="img-responsive" src="<?= $images['full'] ?>" alt="<?= $dynamic_featured_image->get_image_alt_by_id($images['attachment_id']) ?>" />
-                                            </li>                                          
-                                       <?php }
-                                    }
-                                 }
-                                 else
-
-                                    the_post_thumbnail('work-thumbnail', array('class' => 'img-responsive'));
-
-                                  ?>
-
-                            </ul>
-                        </div>
-                        <div id="carousel" class="flexslider">
-                            <ul class="slides">
-
-                                <?php if( class_exists('Dynamic_Featured_Image') ) {
-                                     global $dynamic_featured_image;
-                                     $featuredImages = $dynamic_featured_image->get_featured_images( $postId );
-
-                                    if( !is_null($featuredImages) ){
-                                       foreach($featuredImages as $images) { ?>
-                                            <li>
-                                                <img src="<?= $images['thumb'] ?>" alt="<?= $dynamic_featured_image->get_image_alt_by_id($images['attachment_id']) ?>" />
-                                            </li>                                          
-                                       <?php }
-                                    }
-                                 } ?>
-
-                                
+                                <?php the_post_thumbnail('work-thumbnail', array('class' => 'img-responsive')); ?>
                             </ul>
                         </div>
                     </section><!--//slideshow-->

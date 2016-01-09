@@ -80,5 +80,5 @@
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/isotope-custom.js"></script>
 
     <!-- Google Map -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script> 
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/map.js"></script>
