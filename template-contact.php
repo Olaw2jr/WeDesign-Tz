@@ -65,7 +65,7 @@
             <p class="intro text-center"><?php get_the_excerpt(); ?></p>
             
         <ul class="contact-info list-inline text-center">
-            <li class="tel"><span class="fs1" aria-hidden="true" data-icon="&#x77;"></span><br /> <a href="%2b0800123456.html">0800 123 4567</a></li>
+            <li class="tel"><span class="fs1" aria-hidden="true" data-icon="&#x77;"></span><br /> <a href="+255 714 667 787">+255 714 667 787</a></li>
             <li class="email"><span class="fs1" aria-hidden="true" data-icon="&#xe010;"></span><br /> <a href="#">hello@wedesign.co.tz</a></li>
         </ul>
 
@@ -134,11 +134,11 @@
     <div class="gmap-wrapper">
         <div class="gmap" id="map"></div><!--//map-->
         <div class="map-overlay">
-            <h4 class="title">DevStudio</h4>
+            <h4 class="title">WeDesign Tz</h4>
             <p class="address">                          
-                <span class="region">56 College Green Road</span><br/>
-                <span class="postal-code">BS1 XR18</span><br/>
-                <span class="country-name">UK</span>
+                <span class="region">P.O Box 78</span><br/>
+                <span class="postal-code">Arusha</span><br/>
+                <span class="country-name">TZ</span>
             </p>
         </div>
     </div><!--//gmap-wrapper-->

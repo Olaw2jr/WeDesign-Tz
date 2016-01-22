@@ -26,7 +26,7 @@
             <div class="content">
                 <div class="desc">
                     <?php the_excerpt(); ?>
-                    <a class="read-more" href="<?php the_permalink(); ?>">Read more <i class="fa fa-long-arrow-right"></i></a>
+                    <a class="read-more" href="<?php the_permalink(); ?>"><?php _e( 'Read more', 'sage' ); ?> <i class="fa fa-long-arrow-right"></i></a>
                 </div><!--//desc-->
             </div><!--//content-->
         </div><!--//content-wrapper-->   

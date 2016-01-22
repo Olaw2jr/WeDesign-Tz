@@ -14,7 +14,7 @@
           <nav class="main-nav navbar-right" role="navigation">
               <div class="navbar-header">
                   <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                      <span class="sr-only">Toggle navigation</span>
+                      <span class="sr-only"><?php _e( 'Toggle navigation', 'sage' ); ?> </span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
@@ -51,11 +51,11 @@
   <section id="home-promo" class="home-promo section">
     <div class="container text-center">                
       <h2 class="title">
-        <span class="upper">We build</span>
-        <span class="middle">Web and Mobile Apps</span>
-        <span class="bottom">for startups and agencies</span>
+        <span class="upper"><?php _e( 'We build', 'sage' ); ?> </span>
+        <span class="middle"><?php _e( 'Web and Mobile Apps', 'sage' ); ?> </span>
+        <span class="bottom"><?php _e( 'for startups and agencies', 'sage' ); ?> </span>
       </h2>
-      <button class="btn btn-cta btn-cta-primary" type="button" data-toggle="modal" data-target="#modal-contact" data-backdrop="static">Talk to us</button>
+      <button class="btn btn-cta btn-cta-primary" type="button" data-toggle="modal" data-target="#modal-contact" data-backdrop="static"><?php _e( 'Talk to us', 'sage' ); ?></button>
     </div><!--//container-->
   </section><!--//promo-->
   <?php endif; ?> <!--End is Front page-->
