@@ -17,7 +17,7 @@
     </div><!--//footer-content-->
     <div class="bottom-bar">
         <div class="container center">                                   
-            <small class="copyright text-center">Copyright @ <?php the_time('Y'); ?> <?php bloginfo('name'); ?></small>                 
+            <small class="copyright text-center"><?php _e( 'Copyright', 'sage' ); ?> @ <?php the_time('Y'); ?> <?php bloginfo('name'); ?></small>                 
         </div><!--//container-->
     </div><!--//bottom-bar-->
 </footer><!--//footer-->
@@ -66,19 +66,29 @@
     </div><!--//modal-dialog-->
 </div><!--//modal-->
 
-    <!-- Main Javascript -->   
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/back-to-top.js"></script>             
     
-    <!-- Flexslider --> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/flexslider-custom.js"></script> 
-
-    <!-- Owl Carousel --> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/owl-custom.js"></script> 
-
-    <!-- isotope -->
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/isotope-custom.js"></script>
-
     <!-- Google Map -->
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script> 
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/js/map.js"></script>
+
+    <script type="text/javascript" >
+        var map;
+        jQuery(document).ready(function(){
+
+            map = new GMaps({
+                div: '#map',
+                lat: 51.451573,
+                lng: -2.595008,
+            });
+            map.addMarker({
+                lat: 51.451573,
+                lng: -2.595008,
+                title: 'Address',      
+                infoWindow: {
+                    content: '<h5 class="title">DevStudio</h5><p><span class="region">Address line goes here</span><br><span class="postal-code">Postcode</span><br><span class="country-name">Country</span></p>'
+                }
+                
+            });
+
+        });
+    </script>

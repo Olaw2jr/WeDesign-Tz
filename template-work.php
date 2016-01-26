@@ -9,13 +9,13 @@ query_posts('post_type=work&posts_per_page=6');
 <!-- ******Work list Section****** -->
 <section id="work-list" class="section work-list">
     <div class="container text-center">
-        <h2 class="title">Case Studies</h2>
+        <h2 class="title"><?php _e( 'Case Studies', 'sage' ); ?>Case Studies</h2>
 
         <?php
             $terms = get_terms("work_type");
             $count = count($terms);
             echo '<div id="filters" class="button-group clearfix">';
-            echo '<button class="btn button is-checked" data-filter="*">All</button>';
+            echo '<button class="btn button is-checked" data-filter="*"><?php _e( 'All', 'sage' ); ?></button>';
             if ( $count > 0 ){  
                 foreach ( $terms as $term ) {
                             
@@ -50,8 +50,8 @@ query_posts('post_type=work&posts_per_page=6');
                                 <?php the_post_thumbnail('work-thumbnail', array('class' => 'img-responsive')); ?>
                             </a>
                             <a class="info-mask" href="<?php the_permalink(); ?>">
-                                <span class="desc">Project intro goes here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor...</span>
-                                <span class="btn btn-cta btn-cta-primary" >View case study</span>
+                                <span class="desc"><?php //the_excerpt(); ?></span>
+                                <span class="btn btn-cta btn-cta-primary" ><?php _e( 'View case study', 'sage' ); ?></span>
                             </a><!--//info-mask-->
                         </figure>
                         <div class="content text-center">
