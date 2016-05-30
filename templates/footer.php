@@ -64,9 +64,7 @@
             </div><!--//modal-body-->
         </div><!--//modal-content-->
     </div><!--//modal-dialog-->
-</div><!--//modal-->
-
-    <script type="text/javascript" src="<?= get_template_directory_uri(); ?>/assets/plugins/back-to-top.js"></script>             
+</div><!--//modal-->         
     
     <!-- Google Map -->
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script> 

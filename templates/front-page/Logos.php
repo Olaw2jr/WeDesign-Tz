@@ -1,7 +1,7 @@
 <!-- ******Logos Section****** -->
 <section id="logos" class="logos section">
     <div class="container text-center">
-        <h2 class="title">Who we have worked with</h2>
+        <h2 class="title"><?php _e( 'Who we have worked with', 'sage' ); ?></h2>
 
         <ul class="logo-list list-inline row">
             <?php $query = new WP_Query( array(
@@ -22,14 +22,14 @@
 <!-- ******CTA Section****** -->
 <section id="cta-section" class="cta-section section text-center home-cta-section">
     <div class="container">
-       <h2 class="title">Want to have a quick chat?</h2>
+       <h2 class="title"><?php _e( 'Want to have a quick chat?', 'sage' ); ?></h2>
        <p class="phone contact-info">
-           <span class="intro">We are only a phone call away</span>
-           <span class="info"><a href="tel:+08001234567">0800 123 4567</a></span>
+           <span class="intro"><?php _e( 'We are only a phone call away', 'sage' ); ?></span>
+           <span class="info"><a href="tel:+255 714 667 787">+255 714 667 787</a></span>
        </p><!--//phone-->
        <p class="email contact-info">
-           <span class="intro">You can also email us</span>
-           <span class="info"><a href="mailto:hello@yourdevstudio.com">hello@yourdevstudio.com</a></span>
+           <span class="intro"><?php _e( 'You can also email us', 'sage' ); ?></span>
+           <span class="info"><a href="mailto:info@wedesign.co.tz">info@wedesign.co.tz</a></span>
        </p><!--//phone-->              
     </div><!--//container-->
 </section><!--//cta-section-->

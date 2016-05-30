@@ -12,6 +12,11 @@
       ],
       "main": true
     },
+    "admin.js": {
+      "files": [
+        "scripts/admin.js"
+      ]
+    },
     "jquery.js": {
       "bower": ["jquery"]
     }

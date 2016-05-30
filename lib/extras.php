@@ -198,3 +198,38 @@ function sage_validate_length( $fieldValue, $minLength ) {
   // First, remove trailing and leading whitespace
   return ( strlen( trim( $fieldValue ) ) > $minLength );
 }
+
+/**
+  * COMMENT LAYOUT 
+  */
+    
+// Comment Layout
+function wp_bootstrap_comments($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+  <li <?php comment_class(); ?>>
+    <div id="comment-<?php comment_ID(); ?>" class="comment-item depth-1 parent">
+          <div class="comment-item-box">
+              <div class="comment-author">
+                  <?php echo get_avatar( $comment, $size='60' ); ?>
+              </div><!--//comment-author-->
+              <div class="comment-body">
+                  <?php printf('<cite class="name">%s Says:</cite>', get_comment_author_link()) ?>
+                  <p class="time"><?php comment_time('F j, Y '); ?></p>
+                  <div class="content">
+                      <?php comment_text() ?>
+                  </div><!--//content-->
+                  <a class="comment-reply-link btn btn-cta btn-cta-secondary" href="#">Reply</a>
+              </div><!--//comment-body-->          
+          </div><!--//comment-box--> 
+      </div><!--//comment-item depth-1-->
+    <!-- </li> is added by wordpress automatically -->
+
+<?php
+} // don't remove this bracket!
+// Display trackbacks/pings callback function
+function list_pings($comment, $args, $depth) {
+       $GLOBALS['comment'] = $comment;
+?>
+        <li id="comment-<?php comment_ID(); ?>"><i class="icon icon-share-alt"></i>&nbsp;<?php comment_author_link(); ?>
+<?php 
+}

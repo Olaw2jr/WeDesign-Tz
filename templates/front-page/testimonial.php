@@ -1,8 +1,8 @@
 <!-- ******Testimonials Section****** -->
 <section id="testimonials" class="testimonials section">
     <div class="container">
-        <h2 class="title text-center">Testimonials</h2>
-        <p class="intro text-center">Don’t just take our word for it – see what our clients are saying</p>
+        <h2 class="title text-center"><?php _e( 'Testimonials', 'sage' ); ?></h2>
+        <p class="intro text-center"><?php _e( 'Don’t just take our word for it – see what our clients are saying', 'sage' ); ?></p>
         <div class="row">
 
             <?php $query = new WP_Query( array(
@@ -15,8 +15,15 @@
 
             //Get the Custom Post Meta Details For Work
             $custom = get_post_custom($post->ID);
-            $position = $custom["sage_position"][0];  
-            $avatar = $post_meta_data['sage_avatar'][0]; ?>
+            $position = $custom["sage_position"][0];
+            $avatar = get_post_meta( get_the_ID(), 'sage_avatar', true );
+                if(empty($avatar)){
+                    $avatar_url = esc_url( get_template_directory_uri().'/dist/images/client/client-profile-1.png');
+                    //$avatar_url = get_template_directory_uri()"/dist/images/client/client-profile-1.png";
+
+                } else {
+                    $avatar_url = wp_get_attachment_url( $avatar );
+                } ?>
 
             <div class="item col-md-6 col-sm-6 col-xs-12">
                 <div class="item-inner">
@@ -26,7 +33,9 @@
                     </div><!--//quote-->
                     <div class="meta">
                         <div class="profile">
-                            <img class="img-circle" src="<?= get_template_directory_uri(); ?>/dist/images/client/client-profile-1.png" alt="" />
+                            <?//= $avatar_url; ?>
+                            <img class="img-circle img-responsive" width="100px" src="<?= $avatar_url; ?>" alt="" />
+
                             <p class="name"><?php the_title(); ?><br />
                                 <span class="source-title"><?= $position; ?></span>
                             </p>

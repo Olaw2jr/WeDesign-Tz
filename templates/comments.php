@@ -8,23 +8,16 @@ if (post_password_required()) {
   <div class="comment-container">                   
     <div class="comment-list">
     <?php if (have_comments()) : ?>
-      <h3 class="title">5 Comments</h3>
+      <h4 class="title">
+        <?php
+          printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage' ),
+            number_format_i18n( get_comments_number() ), get_the_title() );
+        ?>
+      </h4>
       
-      <div class="comment-item depth-1 parent">
-          <div class="comment-item-box">
-              <div class="comment-author">
-                  <img class="img-responsive" src="<?= get_template_directory_uri(); ?>/dist/images/comment/user-4.jpg" alt="" />
-              </div><!--//comment-author-->
-              <div class="comment-body">
-                  <cite class="name">Kathy Morgan Says:</cite>
-                  <p class="time">Jan 03, 2015 at 9:35m</p>
-                  <div class="content">
-                      <p>Nunc in urna eu lorem accumsan placerat vel eu turpis. Etiam laoreet posuere mauris, id pharetra orci molestie sit amet. Duis pretium diam ex, vitae eleifend diam ornare sit amet. </p>
-                  </div><!--//content-->
-                  <a class="comment-reply-link btn btn-cta btn-cta-secondary" href="#">Reply</a>
-              </div><!--//comment-body-->          
-          </div><!--//comment-box--> 
-      </div><!--//comment-item depth-1-->
+      <ol class="commentlist">
+        <?php wp_list_comments('type=comment&callback=Roots\Sage\Extras\wp_bootstrap_comments'); ?>
+      </ol>
 
       <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
       <nav>
