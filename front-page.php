@@ -4,4 +4,4 @@
   <?php get_template_part('templates/front-page/testimonial'); ?>
   <?php get_template_part('templates/front-page/logos'); ?>
   <?php get_template_part('templates/front-page/blog'); ?>
-<?php endwhile; ?>
+<?php endwhile; 

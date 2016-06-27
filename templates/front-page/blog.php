@@ -4,7 +4,7 @@
         <h2 class="title text-center">Latest Blog Posts</h2>
         <div class="row">
 
-            <?php $newsposts = new WP_Query('posts_per_page=2'); ?>
+            <?php $newsposts = new WP_Query('posts_per_page=>2, ignore_sticky_posts => 1'); ?>
             <?php while ($newsposts->have_posts()) : $newsposts->the_post(); ?>
                 
             <div class="item col-md-6 col-sm-6 col-xs-12">

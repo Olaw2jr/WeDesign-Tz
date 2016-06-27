@@ -9,7 +9,9 @@
                   'posts_per_page' => 4
               ) );
               while ($query->have_posts()) : $query->the_post(); ?>
-              <li class="col-md-3 col-sm-3 col-xs-6"><a href="#"><?php the_post_thumbnail('client-thumb2', array('class' => 'img-responsive')); ?></a></li>
+              <li class="col-md-3 col-sm-3 col-xs-6">
+                  <a href="#"><?php the_post_thumbnail('client-thumb2', array('class' => 'img-responsive')); ?></a>
+              </li>
               <?php endwhile;
               // Restore original Post Data
               wp_reset_postdata(); ?> 

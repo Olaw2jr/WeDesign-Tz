@@ -83,7 +83,7 @@
                 lng: -2.595008,
                 title: 'Address',      
                 infoWindow: {
-                    content: '<h5 class="title">DevStudio</h5><p><span class="region">Address line goes here</span><br><span class="postal-code">Postcode</span><br><span class="country-name">Country</span></p>'
+                    content: '<h5 class="title">WeDesign</h5><p><span class="region">Address line goes here</span><br><span class="postal-code">Postcode</span><br><span class="country-name">Country</span></p>'
                 }
                 
             });
