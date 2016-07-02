@@ -62,6 +62,6 @@
             wp_reset_postdata(); ?>
 
         </div><!--//owl-carousel-->
-        <a class="btn btn-cta btn-cta-secondary" href="<?= esc_url(home_url('/about')); ?>">View all case studies</a>
+        <a class="btn btn-cta btn-cta-secondary" href="<?= esc_url(home_url('/work')); ?>">View all case studies</a>
     </div><!--container-fluid-->
 </section><!--//latest-work-->
