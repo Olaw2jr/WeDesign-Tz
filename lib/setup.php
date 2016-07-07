@@ -141,6 +141,9 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
+  wp_register_script( 'pw-google-maps-api', 'https://maps.google.com/maps/api/js?key=AIzaSyAHPBcPSyJBWj2UVU8TQiODCLjgIy1sM0o', null, null, true );
+  wp_enqueue_script('pw-google-maps-api');
+
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

@@ -238,6 +238,32 @@
       init: function() {
         // JavaScript to be fired on the about us page
       }
+    },
+
+    // Contact Us page
+    'contact': {
+        init: function () {
+            //Javascript to be fired on the contact us page
+            var map;
+            jQuery(document).ready(function(){
+
+                map = new GMaps({
+                    div: '#map',
+                    lat: -6.8094156,
+                    lng: 39.2840912,
+                });
+                map.addMarker({
+                    lat: -6.8094156,
+                    lng: 39.2840912,
+                    title: 'Address',
+                    infoWindow: {
+                        content: '<h5 class="title">WeDesign</h5><p><span class="region">Address line goes here</span><br><span class="postal-code">Postcode</span><br><span class="country-name">Country</span></p>'
+                    }
+
+                });
+
+            });
+        }
     }
   };
 
