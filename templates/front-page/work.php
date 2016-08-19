@@ -15,7 +15,7 @@
             $query = new WP_Query( $args );
 
             // The Loop
-            while ( $query->have_posts() ): $query->the_post(); $count++; 
+            while ( $query->have_posts() ): $query->the_post();
 
             //Get the Custom Post Meta Details For Work
             $custom = get_post_custom($post->ID);

@@ -251,13 +251,20 @@
                     div: '#map',
                     lat: -6.8094156,
                     lng: 39.2840912,
+                    scrollwheel: false
                 });
                 map.addMarker({
                     lat: -6.8094156,
                     lng: 39.2840912,
                     title: 'Address',
                     infoWindow: {
-                        content: '<h5 class="title">WeDesign</h5><p><span class="region">Address line goes here</span><br><span class="postal-code">Postcode</span><br><span class="country-name">Country</span></p>'
+                        content:
+                        '<h5 class="title">WeDesign</h5>' +
+                        '<p>' +
+                            '<span class="region">P.O Box 78,</span>' +
+                            '<br><span class="postal-code">Usa-River</span><br>' +
+                            '<span class="country-name">Arusha</span>' +
+                        '</p>'
                     }
 
                 });

@@ -5,8 +5,10 @@ use Roots\Sage\Wrapper;
 
 ?>
 
+<!-- Want to make this site better?  https://oscarolotu.com/jobs -->
+
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> >
 <?php get_template_part('templates/head'); ?> 
 <body <?php body_class('home-page'); ?>>
     <!--[if lt IE 9]>
