@@ -8,13 +8,15 @@ use Roots\Sage\Assets;
  * Theme setup
  */
 function setup() {
-  // Enable features from Soil when plugin is activated
-  // https://roots.io/plugins/soil/
-  add_theme_support('soil-clean-up');
-  add_theme_support('soil-nav-walker');
-  add_theme_support('soil-nice-search');
-  add_theme_support('soil-jquery-cdn');
-  add_theme_support('soil-relative-urls');
+    /**
+     * Enable features from Soil when plugin is activated
+     * @link https://roots.io/plugins/soil/
+     */
+    add_theme_support('soil-clean-up');
+    add_theme_support('soil-jquery-cdn');
+    add_theme_support('soil-nav-walker');
+    add_theme_support('soil-nice-search');
+    add_theme_support('soil-relative-urls');
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
@@ -53,6 +55,17 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
+
+   //Add theme support for custom Logo
+   $args = [
+       'height'      => 40,
+       'width'       => 40,
+       'flex-height' => true,
+       'flex-width'  => true,
+       'header-text' => [ 'site-title', 'site-description' ],
+   ];
+   add_theme_support('custom-logo', $args);
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 

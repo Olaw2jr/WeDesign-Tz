@@ -136,9 +136,11 @@
              
              if ($(window).scrollTop() > 80 ) {
                  $('#header').addClass('header-shrink');
+                 $('.nav-logo').addClass('logo-shrink');
              }
              else {
-                 $('#header').removeClass('header-shrink');             
+                 $('#header').removeClass('header-shrink');
+                 $('.nav-logo').removeClass('logo-shrink');
              }
         });
 

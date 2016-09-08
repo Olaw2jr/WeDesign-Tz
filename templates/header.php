@@ -7,9 +7,13 @@
 <div class="header-wrapper <?= Extras\container_class(); ?>" style="background:  #65758e url('<?= $page_image ?>') no-repeat 50% top;">
   <!-- ******HEADER****** --> 
   <header id="header" class="header navbar-fixed-top">  
-      <div class="container">       
-          <h1 class="logo">
-              <a href="<?= esc_url(home_url('/')); ?>"><span class="highlight">We</span>Design <?php //bloginfo('name'); ?></a>
+      <div class="container">
+          <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>">
+              <img alt="<?php bloginfo('name'); ?>" class="nav-logo" style="height: 100%; width: auto; margin-right: 5px;" src="http://local.wordpress.dev/wp-content/uploads/2016/08/minshock-logo2.svg" >
+              <?//= get_custom_logo(); ?>
+          </a>
+          <h1 class="logo hidden-xs">
+              <a href="<?= esc_url(home_url('/')); ?>"> <?php bloginfo('name'); ?> </a>
           </h1><!--//logo-->
           <nav class="main-nav navbar-right" role="navigation">
               <div class="navbar-header">
