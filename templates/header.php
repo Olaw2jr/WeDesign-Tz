@@ -9,8 +9,11 @@
   <header id="header" class="header navbar-fixed-top">  
       <div class="container">
           <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>">
-              <img alt="<?php bloginfo('name'); ?>" class="nav-logo" style="height: 100%; width: auto; margin-right: 5px;" src="http://local.wordpress.dev/wp-content/uploads/2016/08/minshock-logo2.svg" >
-              <?//= get_custom_logo(); ?>
+              <?php
+                  $sage_logo = get_theme_mod( 'custom_logo' );
+                  $image = wp_get_attachment_image_src( $sage_logo , 'full' );
+              ?>
+              <img class="nav-logo" style="height: 100%; width: auto; margin-right: 5px;" src="<?= $image[0]; ?>" alt="<?php bloginfo('name'); ?>" >
           </a>
           <h1 class="logo hidden-xs">
               <a href="<?= esc_url(home_url('/')); ?>"> <?php bloginfo('name'); ?> </a>

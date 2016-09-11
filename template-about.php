@@ -6,16 +6,13 @@
 
 <!-- ******team Section****** -->
 <section id="team" class="team section">
+    <?php while (have_posts())  : the_post(); ?>
     <div class="container">
         <h2 class="title text-center">Meet the team</h2>
         <p class="intro text-center"><?php get_the_excerpt(); ?></p>
-
-        <?php while (have_posts())  : the_post(); ?>  
         <div class="row">
-
             <?php // The Query
                 $user_query = new WP_User_Query( array( 'role' => 'Administrator' ) );
-
                 // User Loop
                 if ( ! empty( $user_query->results ) ) {
                     foreach ( $user_query->results as $user ) {
@@ -48,9 +45,8 @@
             ?>
 
         </div><!--//row-->
-
-        <?php endwhile; ?>
     </div><!--//container-->
+    <?php endwhile; ?>
 </section><!--//team-section-->
 
 <!-- ******Services Section****** -->
@@ -104,6 +100,6 @@
                 </div><!--//item-inner-->
             </div><!--//item-->
         </div><!--//row-->
-        <a class="btn btn-cta btn-cta-primary" href="contact.html">Get a quote</a>
+        <a class="btn btn-cta btn-cta-primary" href="<?= esc_url(home_url('/contact')); ?>">Get a quote</a>
     </div><!--//container-->
 </section>

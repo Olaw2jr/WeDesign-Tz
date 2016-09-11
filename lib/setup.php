@@ -13,7 +13,7 @@ function setup() {
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil-clean-up');
-    add_theme_support('soil-jquery-cdn');
+    //add_theme_support('soil-jquery-cdn');
     add_theme_support('soil-nav-walker');
     add_theme_support('soil-nice-search');
     add_theme_support('soil-relative-urls');
@@ -38,7 +38,7 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
   set_post_thumbnail_size( 800, 300, false );
-  add_image_size( 'post-thumb', 60, 60, false );
+  add_image_size( 'post-thumb', 60, 60, true  );
   add_image_size( 'page-header', 1600, 400, false );
   add_image_size( 'work-thumbnail', 1184, 724, false );
   add_image_size( 'client-thumb', 200, 85, false );
