@@ -44,63 +44,63 @@
 
           scrollup:function(){
             if (!this.cssfixedsupport) //if control is positioned using JavaScript
-              this.$control.css({opacity:0}) //hide control immediately after clicking it
-            var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto)
+              this.$control.css({opacity:0}); //hide control immediately after clicking it
+            var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto);
             if (typeof dest=="string" && jQuery('#'+dest).length==1) //check element set by string exists
-              dest=jQuery('#'+dest).offset().top
+              dest=jQuery('#'+dest).offset().top;
             else
-              dest=0
+              dest=0;
             this.$body.animate({scrollTop: dest}, this.setting.scrollduration);
           },
 
           keepfixed:function(){
-            var $window=jQuery(window)
-            var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx
-            var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety
+            var $window=jQuery(window);
+            var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx;
+            var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety;
             this.$control.css({left:controlx+'px', top:controly+'px'})
           },
 
           togglecontrol:function(){
-            var scrolltop=jQuery(window).scrollTop()
+            var scrolltop=jQuery(window).scrollTop();
             if (!this.cssfixedsupport)
-              this.keepfixed()
+              this.keepfixed();
             this.state.shouldvisible=(scrolltop>=this.setting.startline)? true : false
             if (this.state.shouldvisible && !this.state.isvisible){
-              this.$control.stop().animate({opacity:1}, this.setting.fadeduration[0])
+              this.$control.stop().animate({opacity:1}, this.setting.fadeduration[0]);
               this.state.isvisible=true
             }
             else if (this.state.shouldvisible==false && this.state.isvisible){
-              this.$control.stop().animate({opacity:0}, this.setting.fadeduration[1])
+              this.$control.stop().animate({opacity:0}, this.setting.fadeduration[1]);
               this.state.isvisible=false
             }
           },
           
           init:function(){
             jQuery(document).ready(function($){
-              var mainobj=scrolltotop
-              var iebrws=document.all
-              mainobj.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
-              mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body')
+              var mainobj=scrolltotop;
+              var iebrws=document.all;
+              mainobj.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest; //not IE or IE7+ browsers in standards mode
+              mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body');
               mainobj.$control=$('<div id="topcontrol">'+mainobj.controlHTML+'</div>')
                 .css({position:mainobj.cssfixedsupport? 'fixed' : 'absolute', bottom:mainobj.controlattrs.offsety, right:mainobj.controlattrs.offsetx, opacity:0, cursor:'pointer'})
                 .attr({title:'Scroll Back to Top'})
                 .click(function(){mainobj.scrollup(); return false})
-                .appendTo('body')
+                .appendTo('body');
               if (document.all && !window.XMLHttpRequest && mainobj.$control.text()!='') //loose check for IE6 and below, plus whether control contains any text
-                mainobj.$control.css({width:mainobj.$control.width()}) //IE6- seems to require an explicit width on a DIV containing text
-              mainobj.togglecontrol()
+                mainobj.$control.css({width:mainobj.$control.width()}); //IE6- seems to require an explicit width on a DIV containing text
+              mainobj.togglecontrol();
               $('a[href="' + mainobj.anchorkeyword +'"]').click(function(){
-                mainobj.scrollup()
+                mainobj.scrollup();
                 return false
-              })
+              });
               $(window).bind('scroll resize', function(e){
                 mainobj.togglecontrol()
               })
             })
           }
-        }
+        };
 
-        scrolltotop.init()
+        scrolltotop.init();
 
 
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -110,27 +110,14 @@
         /* apply dropdownHover to all elements with the data-hover="dropdown" attribute */
         
         $('[data-hover="dropdown"]').dropdownHover();
-        
-        /* ======= jQuery Responsive equal heights plugin ======= */
-        /* Ref: https://github.com/liabru/jquery-match-height */
-        
-         $('#who .item-inner').matchHeight();    
-         $('#testimonials .item-inner .quote').matchHeight(); 
-         $('#latest-blog .item-inner').matchHeight(); 
-         $('#services .item-inner').matchHeight();
-         $('#team .item-inner').matchHeight();
+
          
         /* ======= jQuery Placeholder ======= */
         /* Ref: https://github.com/mathiasbynens/jquery-placeholder */
         
         $('input, textarea').placeholder();         
         
-        /* ======= jQuery FitVids - Responsive Video ======= */
-        /* Ref: https://github.com/davatron5000/FitVids.js/blob/master/README.md */    
-        $(".video-container").fitVids();   
-        
-      
-        /* ======= Fixed Header animation ======= */ 
+       /* ======= Fixed Header animation ======= */
             
         $(window).on('scroll', function() {
              
@@ -143,102 +130,112 @@
                  $('.nav-logo').removeClass('logo-shrink');
              }
         });
-
-        /* ======= Owl Carousel ======= */    
-        /* Ref: http://owlgraphic.com/owlcarousel/index.html */
-
-        $("#work-carousel").owlCarousel({
-                    
-            autoPlay : 6000,
-            stopOnHover : true,
-            paginationSpeed : 1000,
-            goToFirstSpeed : 40,
-            singleItem : true,
-            autoHeight : true 
-            
-        }); 
-
-        /* ======= Header Background Slideshow - Flexslider ======= */    
-        /* Ref: https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties */
-        
-        $('#bg-slider').flexslider({
-            animation: "fade",
-            directionNav: false, //remove the default direction-nav - https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties
-            controlNav: false, //remove the default control-nav
-            slideshowSpeed: 6000
-        });
-        
-        /* ======= Case Study Slideshow - Flexslider ======= */ 
-        //Ref: http://flexslider.woothemes.com/thumbnail-slider.html
-        // The slider being synced must be initialized first
-        $('#carousel').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: false,
-            slideshow: false,
-            itemWidth: 180,
-            itemMargin: 5,
-            asNavFor: '#slider'
-        });
-        
-        $('#slider').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: false,
-            slideshow: false,
-            sync: "#carousel"
-        });
-        
-        
-        $('#work-carousel').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: false,
-            slideshow: false
-        });
-
-        /* ======= Isotope plugin ======= */
-        /* Ref: http://isotope.metafizzy.co/ */
-        // init Isotope    
-        var $container = $('.isotope');
-        
-        $container.imagesLoaded(function () {
-          $('.isotope').isotope({
-              itemSelector: '.item'
-          });
-        });
-        
-        // filter items on button click
-        $('#filters').on( 'click', 'button', function() {
-          var filterValue = $(this).attr('data-filter');
-          $container.isotope({ filter: filterValue });
-        });
-        
-        // change is-checked class on buttons
-        $('.button-group').each( function( i, buttonGroup ) {
-          var $buttonGroup = $( buttonGroup );
-          $buttonGroup.on( 'click', 'button', function() {
-            $buttonGroup.find('.is-checked').removeClass('is-checked');
-            $( this ).addClass('is-checked');
-          });
-        });
-
-        
       }
     },
+      
     // Home page
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
+
+          /* ======= jQuery Responsive equal heights plugin ======= */
+          /* Ref: https://github.com/liabru/jquery-match-height */
+
+          $('#about .item-inner').matchHeight();
+          $('#testimonials .item-inner .quote').matchHeight();
+          $('#latest-blog .item-inner').matchHeight();
+          $('#services .item-inner').matchHeight();
+          $('#team .item-inner').matchHeight();
+
+          /* ======= Owl Carousel ======= */
+          /* Ref: http://owlgraphic.com/owlcarousel/index.html */
+
+          $("#work-carousel").owlCarousel({
+
+              autoPlay : 6000,
+              stopOnHover : true,
+              paginationSpeed : 1000,
+              goToFirstSpeed : 40,
+              singleItem : true,
+              autoHeight : true
+
+          });
+
+          /* ======= Header Background Slideshow - Flexslider ======= */
+          /* Ref: https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties */
+
+          $('#bg-slider').flexslider({
+              animation: "fade",
+              directionNav: false, //remove the default direction-nav - https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties
+              controlNav: false, //remove the default control-nav
+              slideshowSpeed: 6000
+          });
+
+          /* ======= Case Study Slideshow - Flexslider ======= */
+          //Ref: http://flexslider.woothemes.com/thumbnail-slider.html
+          // The slider being synced must be initialized first
+          $('#carousel').flexslider({
+              animation: "slide",
+              controlNav: false,
+              animationLoop: false,
+              slideshow: false,
+              itemWidth: 180,
+              itemMargin: 5,
+              asNavFor: '#slider'
+          });
+
+          $('#slider').flexslider({
+              animation: "slide",
+              controlNav: false,
+              animationLoop: false,
+              slideshow: false,
+              sync: "#carousel"
+          });
+
+
+          $('#work-carousel').flexslider({
+              animation: "slide",
+              controlNav: false,
+              animationLoop: false,
+              slideshow: false
+          });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS
       }
     },
     // About us page, note the change from about-us to about_us.
-    'about_us': {
+
+    'work': {
       init: function() {
-        // JavaScript to be fired on the about us page
+        // JavaScript to be fired on the Portfolio page
+
+          /* ======= Isotope plugin ======= */
+          /* Ref: http://isotope.metafizzy.co/ */
+          // init Isotope
+          var $container = $('.isotope');
+
+          $container.imagesLoaded(function () {
+              $('.isotope').isotope({
+                  itemSelector: '.item'
+              });
+          });
+
+          // filter items on button click
+          $('#filters').on( 'click', 'button', function() {
+              var filterValue = $(this).attr('data-filter');
+              $container.isotope({ filter: filterValue });
+          });
+
+          // change is-checked class on buttons
+          $('.button-group').each( function( i, buttonGroup ) {
+              var $buttonGroup = $( buttonGroup );
+              $buttonGroup.on( 'click', 'button', function() {
+                  $buttonGroup.find('.is-checked').removeClass('is-checked');
+                  $( this ).addClass('is-checked');
+              });
+          });
+
       }
     },
 
