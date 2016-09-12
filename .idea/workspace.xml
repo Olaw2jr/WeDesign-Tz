@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a758262-abf2-4958-b988-cddc2f3472b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scripts/main.js" afterPath="$PROJECT_DIR$/assets/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/widget.php" afterPath="$PROJECT_DIR$/lib/widget.php" />
     </list>
     <ignored path="DevStudios.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,26 +79,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/scripts/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-743">
-              <caret line="134" column="6" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
+            <state relative-caret-position="973">
+              <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
               <folding>
                 <element signature="e#781#6395#0" expanded="false" />
                 <element signature="e#1342#5307#0" expanded="false" />
                 <element signature="e#6022#6379#0" expanded="false" />
-                <element signature="e#6433#8796#0" expanded="false" />
-                <element signature="e#7073#7291#0" expanded="false" />
-                <element signature="e#7494#7780#0" expanded="false" />
-                <element signature="e#8020#8261#0" expanded="false" />
-                <element signature="e#8299#8479#0" expanded="false" />
-                <element signature="e#8525#8672#0" expanded="false" />
-                <element signature="e#8876#9924#0" expanded="false" />
-                <element signature="e#9172#9281#0" expanded="false" />
-                <element signature="e#9385#9518#0" expanded="false" />
-                <element signature="e#9632#9907#0" expanded="false" />
-                <element signature="e#9965#10961#0" expanded="false" />
+                <element signature="e#6427#8790#0" expanded="false" />
+                <element signature="e#7067#7285#0" expanded="false" />
+                <element signature="e#7488#7774#0" expanded="false" />
+                <element signature="e#8014#8255#0" expanded="false" />
+                <element signature="e#8293#8473#0" expanded="false" />
+                <element signature="e#8519#8666#0" expanded="false" />
+                <element signature="e#8870#9918#0" expanded="false" />
+                <element signature="e#9166#9275#0" expanded="false" />
+                <element signature="e#9379#9512#0" expanded="false" />
+                <element signature="e#9626#9901#0" expanded="false" />
+                <element signature="e#9959#10955#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="widget.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/widget.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="80" column="79" selection-start-line="80" selection-start-column="79" selection-end-line="80" selection-end-column="79" />
+              <folding>
+                <marker date="1473673988326" expanded="true" signature="16833:16979" ph="..." />
+                <marker date="1473673988326" expanded="true" signature="17191:17344" ph="..." />
               </folding>
             </state>
           </provider>
@@ -175,6 +188,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/templates/header.php" />
         <option value="$PROJECT_DIR$/assets/scripts/main.js" />
+        <option value="$PROJECT_DIR$/lib/widget.php" />
       </list>
     </option>
   </component>
@@ -263,7 +277,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -378,12 +392,12 @@
       <workItem from="1473253547517" duration="2590000" />
       <workItem from="1473340543229" duration="20193000" />
       <workItem from="1473602319309" duration="2914000" />
-      <workItem from="1473605964464" duration="5858000" />
+      <workItem from="1473605964464" duration="6594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138966000" />
+    <option name="totallyTimeSpent" value="139702000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -696,13 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../wp-includes/general-template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -788,23 +795,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-743">
-          <caret line="134" column="6" selection-start-line="134" selection-start-column="6" selection-end-line="134" selection-end-column="6" />
+        <state relative-caret-position="973">
+          <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
           <folding>
             <element signature="e#781#6395#0" expanded="false" />
             <element signature="e#1342#5307#0" expanded="false" />
             <element signature="e#6022#6379#0" expanded="false" />
-            <element signature="e#6433#8796#0" expanded="false" />
-            <element signature="e#7073#7291#0" expanded="false" />
-            <element signature="e#7494#7780#0" expanded="false" />
-            <element signature="e#8020#8261#0" expanded="false" />
-            <element signature="e#8299#8479#0" expanded="false" />
-            <element signature="e#8525#8672#0" expanded="false" />
-            <element signature="e#8876#9924#0" expanded="false" />
-            <element signature="e#9172#9281#0" expanded="false" />
-            <element signature="e#9385#9518#0" expanded="false" />
-            <element signature="e#9632#9907#0" expanded="false" />
-            <element signature="e#9965#10961#0" expanded="false" />
+            <element signature="e#6427#8790#0" expanded="false" />
+            <element signature="e#7067#7285#0" expanded="false" />
+            <element signature="e#7488#7774#0" expanded="false" />
+            <element signature="e#8014#8255#0" expanded="false" />
+            <element signature="e#8293#8473#0" expanded="false" />
+            <element signature="e#8519#8666#0" expanded="false" />
+            <element signature="e#8870#9918#0" expanded="false" />
+            <element signature="e#9166#9275#0" expanded="false" />
+            <element signature="e#9379#9512#0" expanded="false" />
+            <element signature="e#9626#9901#0" expanded="false" />
+            <element signature="e#9959#10955#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="80" column="79" selection-start-line="80" selection-start-column="79" selection-end-line="80" selection-end-column="79" />
+          <folding>
+            <marker date="1473673988326" expanded="true" signature="16833:16979" ph="..." />
+            <marker date="1473673988326" expanded="true" signature="17191:17344" ph="..." />
           </folding>
         </state>
       </provider>

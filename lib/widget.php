@@ -78,7 +78,7 @@ class Sage_Recent_Posts extends WP_Widget {
 		<?php while ( $r->have_posts() ) : $r->the_post(); ?>
 			
 			<li>
-				<?php the_post_thumbnail('post-thumb', array('class' => 'img-responsive')); ?>
+				<?php the_post_thumbnail('post-thumb', array('class' => 'thumb img-responsive')); ?>
 		        <span class="post-info">
 		            <a class="post-title" href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a><br />
 		            <?php if ( $show_date ) : ?>

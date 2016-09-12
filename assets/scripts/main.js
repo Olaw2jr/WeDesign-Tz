@@ -132,7 +132,7 @@
         });
       }
     },
-      
+
     // Home page
     'home': {
       init: function() {
