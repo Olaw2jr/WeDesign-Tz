@@ -48,22 +48,22 @@
             $emailBody    .= $message . PHP_EOL . PHP_EOL;
             $emailBody    .= sprintf( __( 'You can contact %1$s via email at %2$s', 'sage' ), $name, $email );
             $emailBody    .= PHP_EOL . PHP_EOL;
-            
+
             $emailHeaders[] = "Reply-To: $email" . PHP_EOL;
-            
+
             $emailIsSent = wp_mail( $emailReceiver, $emailSubject, $emailBody, $emailHeaders );
         }
     }
 ?>
 
-<!-- ******Contact Section****** --> 
+<!-- ******Contact Section****** -->
 <section class="contact-section section">
     <?php while( have_posts() ) : the_post(); ?>
 
     <div class="container">
-        <h2 class="title text-center">Start your project today</h2>
-            <p class="intro text-center"><?php get_the_excerpt(); ?></p>
-            
+        <h2 class="title text-center"><?php _e( 'Start your project today', 'sage' ); ?></h2>
+        <p class="intro text-center"><?= get_the_excerpt(); ?></p>
+
         <ul class="contact-info list-inline text-center">
             <li class="tel"><span class="fs1" aria-hidden="true" data-icon="&#x77;"></span><br /> <a href="+255 714 667 787">+255 714 667 787</a></li>
             <li class="email"><span class="fs1" aria-hidden="true" data-icon="&#xe010;"></span><br /> <a href="#">hello@wedesign.co.tz</a></li>
@@ -85,11 +85,11 @@
             <?php endif; ?>
             <?php endif; ?>
         </div>
-        
-        <form action="<?php the_permalink(); ?>" id="contact-form" method="POST" role="form">                  
+
+        <form action="<?php the_permalink(); ?>" id="contact-form" method="POST" role="form">
             <div class="row text-center">
                 <div class="contact-form-inner col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
-                    <div class="row">  
+                    <div class="row">
 
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group <?php if ( isset( $errors['errorName'] ) ) echo "has-error"; ?>">
                             <label class="sr-only" for="cName"><span class="required">* </span><?php _e( 'Your name:', 'sage' ); ?></label>
@@ -97,7 +97,7 @@
                             <?php if ( isset( $errors['errorName'] ) ) : ?>
                                 <p class="help-block"><?php echo $errors['errorName']; ?></p>
                             <?php endif; ?>
-                        </div> 
+                        </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group <?php if ( isset( $errors['errorEmail'] ) ) echo "has-error"; ?>">
                             <label class="sr-only" for="cEmail"><span class="required">* </span><?php _e( 'Email Address:', 'sage' ); ?></label>
@@ -118,7 +118,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                             <input type="hidden" name="is-submitted" id="is-submitted" value="true">
                             <button type="submit" class="btn btn-block btn-cta btn-cta-primary"><?php _e( 'Send Message', 'sage' ); ?></button>
-                        </div>  
+                        </div>
 
                     </div><!--//row-->
                 </div>
@@ -134,7 +134,7 @@
     <div class="gmap-wrapper">
         <div class="gmap" id="map"></div><!--//map-->
         <div class="map-overlay">
-            <h4 class="title">WeDesign Tz</h4>
+            <h4 class="title">MinShock</h4>
             <p class="address">                          
                 <span class="region">P.O Box 78</span><br/>
                 <span class="postal-code">Arusha</span><br/>

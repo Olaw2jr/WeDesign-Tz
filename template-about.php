@@ -8,11 +8,11 @@
 <section id="team" class="team section">
     <?php while (have_posts())  : the_post(); ?>
     <div class="container">
-        <h2 class="title text-center">Meet the team</h2>
-        <p class="intro text-center"><?php get_the_excerpt(); ?></p>
+        <h2 class="title text-center"><?php _e( 'Meet the team', 'sage' ); ?></h2>
+        <p class="intro text-center"><?= get_the_excerpt(); ?></p>
         <div class="row">
             <?php // The Query
-                $user_query = new WP_User_Query( array( 'role' => 'Administrator' ) );
+                $user_query = new WP_User_Query( array( 'role' => 'Administrator', 'orderby' => 'registered' ) );
                 // User Loop
                 if ( ! empty( $user_query->results ) ) {
                     foreach ( $user_query->results as $user ) {
@@ -62,7 +62,7 @@
                     </div><!--//header-->
                     <div class="desc">
                         <h3 class="sub-title">UX &amp; Front-end</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae diam magna. Curabitur nibh metus, ultricies sed aliquam euismod, scelerisque eu purus. In hac habitasse platea dictumst. Suspendisse tempus elit eget libero suscipit pulvinar.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae diam magna. Curabitur nibh metus, ultricies sed aliquam euismod, scelerisque eu purus. In hac habitasse platea dictumst. Suspendisse tempus elit eget libero suscipit pulvinar.</p> -->
                     </div>
                 </div><!--//item-inner-->
             </div><!--//item-->
@@ -73,7 +73,7 @@
                     </div><!--//header-->
                     <div class="desc">
                         <h3 class="sub-title">Back-end &amp; Database</h3>
-                        <p>Phasellus fermentum accumsan fermentum. Vestibulum elit sapien, consequat vitae auctor sit amet, elementum sed elit. Quisque ullamcorper quis augue sit amet porttitor. Maecenas ac dolor iaculis, dapibus.</p>
+                        <!-- <p>Phasellus fermentum accumsan fermentum. Vestibulum elit sapien, consequat vitae auctor sit amet, elementum sed elit. Quisque ullamcorper quis augue sit amet porttitor. Maecenas ac dolor iaculis, dapibus.</p> -->
                     </div>
                 </div><!--//item-inner-->
             </div><!--//item-->
@@ -84,7 +84,7 @@
                     </div><!--//header-->
                     <div class="desc">
                         <h3 class="sub-title">Hosting</h3>
-                        <p>Cras mollis ex sed tortor finibus, a mattis risus rhoncus. Sed sodales et metus at sodales. Ut non dolor sollicitudin, venenatis mauris eget, fringilla enim. Pellentesque sed magna ante. Cras mollis tincidunt lectus vitae suscipit.</p>
+                        <!-- <p>Cras mollis ex sed tortor finibus, a mattis risus rhoncus. Sed sodales et metus at sodales. Ut non dolor sollicitudin, venenatis mauris eget, fringilla enim. Pellentesque sed magna ante. Cras mollis tincidunt lectus vitae suscipit.</p> -->
                     </div>
                 </div><!--//item-inner-->
             </div><!--//item-->
@@ -95,7 +95,7 @@
                     </div><!--//header-->
                     <div class="desc">
                         <h3 class="sub-title">Support</h3>
-                        <p>Aliquam efficitur, lorem blandit dapibus viverra, erat turpis placerat lacus, quis hendrerit libero sem eget dui. Integer eu diam orci. Nullam sed dictum lorem. Quisque ut lacus non enim aliquam pretium sit amet id augue.</p>
+                        <!-- <p>Aliquam efficitur, lorem blandit dapibus viverra, erat turpis placerat lacus, quis hendrerit libero sem eget dui. Integer eu diam orci. Nullam sed dictum lorem. Quisque ut lacus non enim aliquam pretium sit amet id augue.</p> -->
                     </div>
                 </div><!--//item-inner-->
             </div><!--//item-->

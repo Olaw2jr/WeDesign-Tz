@@ -140,7 +140,6 @@
 
           /* ======= jQuery Responsive equal heights plugin ======= */
           /* Ref: https://github.com/liabru/jquery-match-height */
-
           $('#about .item-inner').matchHeight();
           $('#testimonials .item-inner .quote').matchHeight();
           $('#latest-blog .item-inner').matchHeight();
@@ -149,7 +148,6 @@
 
           /* ======= Owl Carousel ======= */
           /* Ref: http://owlgraphic.com/owlcarousel/index.html */
-
           $("#work-carousel").owlCarousel({
 
               autoPlay : 6000,
@@ -163,7 +161,6 @@
 
           /* ======= Header Background Slideshow - Flexslider ======= */
           /* Ref: https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties */
-
           $('#bg-slider').flexslider({
               animation: "fade",
               directionNav: false, //remove the default direction-nav - https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties
@@ -192,12 +189,47 @@
               sync: "#carousel"
           });
 
-
           $('#work-carousel').flexslider({
               animation: "slide",
               controlNav: false,
               animationLoop: false,
               slideshow: false
+          });
+
+          /* ===== Front Page Contact Modal ===== */
+          // http://carlofontanos.com/build-your-own-ajax-contact-form-in-wordpress/
+          function sage_form_validate(element) {
+              $('#contact-form').animate({scrollTop: $(element).offset().top-100}, 150);
+              element.parent().addClass('has-error');
+          }
+
+          $('#contact-form').on('click', '.submit', function () {
+              console.log('Submit Clicked!'); //Will be removed when full working, For Debugging purpose only
+              if($('.input-name').val() === ''){
+                  sage_form_validate($('.input-name'));
+              } else if($('.input-email').val() === ''){
+                  sage_form_validate($('.input-email'));
+              } else if($('.input-message').val() === ''){
+                  sage_form_validate($('.input-message'));
+              } else{
+                  var data ={
+                      'action' : 'sage_send_message',
+                      'name' : $('.input-name').val(),
+                      'email' : $('.input-email').val(),
+                      'message' : $('.input-message').val()
+                  };
+
+                  $.post( SageAjax.ajaxurl, data, function (response) {
+                      if(response === 'success'){
+                          alert('Message Sent Successfully!');
+                          $('.input-name').val('');
+                          $('.input-email').val('');
+                          $('.input-message').val('');
+                      } else {
+                          console.log(response); //To be Replaced with something good!!
+                      }
+                  });
+              }
           });
       },
       finalize: function() {
@@ -258,12 +290,34 @@
                     title: 'Address',
                     infoWindow: {
                         content:
-                        '<h5 class="title">WeDesign</h5>' +
+                        '<h5 class="title">MinShock</h5>' +
                         '<p>' +
                             '<span class="region">P.O Box 78,</span>' +
                             '<br><span class="postal-code">Usa-River</span><br>' +
                             '<span class="country-name">Arusha</span>' +
                         '</p>'
+                    }
+
+                });
+
+                /* ======= jQuery form validator ======= */
+                /* Ref: http://jqueryvalidation.org/documentation/ */
+                $(".form").validate({
+                    messages: {
+
+                        name: {
+                            required: 'Please enter your name' //You can customise this message
+                        },
+                        email: {
+                            required: 'Please enter your email' //You can customise this message
+                        },
+                        message: {
+                            required: 'Please enter your message' //You can customise this message
+                        },
+                        comment: {
+                            required: 'Please enter your comment' //You can customise this message
+                        }
+
                     }
 
                 });

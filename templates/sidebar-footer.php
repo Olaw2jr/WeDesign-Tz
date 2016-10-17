@@ -13,14 +13,16 @@ if (   ! is_active_sidebar( 'first-footer'  )
 
 // This checks if all footer widgets are populated
 else ?>
-
-    <?php dynamic_sidebar( 'first-footer' ); ?> <!-- .first .widget-area -->
- 
-    <?php dynamic_sidebar( 'second-footer' ); ?> <!-- .second .widget-area -->
- 
-    <?php dynamic_sidebar( 'third-footer' ); ?> <!-- .third .widget-area -->
-
-<?php
+     <div class="footer-content">
+         <div class="container">
+             <div class="row">
+                 <?php dynamic_sidebar( 'first-footer' ); ?> <!-- .first .widget-area -->
+                 <?php dynamic_sidebar( 'second-footer' ); ?> <!-- .second .widget-area -->
+                 <?php dynamic_sidebar( 'third-footer' ); ?> <!-- .third .widget-area -->
+             </div>
+         </div>
+     </div><!--//footer-content-->
+ <?php
 //end of all sidebar checks.
 endif;
 

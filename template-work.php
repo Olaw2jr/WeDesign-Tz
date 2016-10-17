@@ -10,7 +10,7 @@ query_posts('post_type=work&posts_per_page=6');
 <section id="work-list" class="section work-list">
     <div class="container text-center">
         <h2 class="title"><?php _e( 'Case Studies', 'sage' ); ?></h2>
-
+        <p class="intro text-center"><?= get_the_excerpt(); ?></p>
         <?php
             $terms = get_terms("work_type");
             $count = count($terms);

@@ -28,7 +28,7 @@ add_filter('body_class', __NAMESPACE__ . '\\body_class');
  * Clean up the_excerpt()
  */
 function excerpt_more() {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
+  return '';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
@@ -46,7 +46,7 @@ function container_class() {
 }
 
 /**
-  * Adds more author flieds in the back end.
+  * Adds more author fields in the back end.
   */
 function contact_info($contactmethods) {
     unset($contactmethods['aim']);
@@ -58,8 +58,6 @@ function contact_info($contactmethods) {
     $contactmethods['phone_no'] = 'Phone No';
     $contactmethods['twitter_profile'] = 'Twitter';
     $contactmethods['github_profile'] = 'Github';
-    $contactmethods['linkedin_profile'] = 'LinkedIn';
-    $contactmethods['google_profile'] = 'Google+';
     return $contactmethods;
 }
 add_filter('user_contactmethods', __NAMESPACE__ . '\\contact_info',10,1);
@@ -202,7 +200,6 @@ function sage_validate_length( $fieldValue, $minLength ) {
 /**
   * COMMENT LAYOUT 
   */
-    
 // Comment Layout
 function wp_bootstrap_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
@@ -233,3 +230,50 @@ function list_pings($comment, $args, $depth) {
         <li id="comment-<?php comment_ID(); ?>"><i class="icon icon-share-alt"></i>&nbsp;<?php comment_author_link(); ?>
 <?php 
 }
+
+/**
+ * Contact Form Ajax
+ * @Author: Oscar Olotu
+ * @Class: sage_posts
+ *
+ * Thanks to Carl Victor Fontanos
+ * http://carlofontanos.com/build-your-own-ajax-contact-form-in-wordpress/
+ */
+add_action('wp_ajax_sage_send_message', array( __NAMESPACE__ . '\\sage_posts', 'sage_send_message'));
+add_action('wp_ajax_nopriv_sage_send_message', array( __NAMESPACE__ . '\\sage_posts', 'sage_send_message'));
+add_filter('wp_mail_content_type', array( __NAMESPACE__ . '\\sage_posts', 'sage_mail_content_type'));
+
+class sage_posts{
+    public static function sage_send_message(){
+        if(isset($_POST['message'])){
+            $to = get_option( 'admin_email' );
+            $headers = 'From: '. $_POST['name'] . '<"'. $_POST['email'] .'">';
+            $subject = "New Message from " . $_POST['name'];
+            ob_start();
+            echo '
+                <h2>Message: </h2>' .
+                wpautop($_POST['message']) . '
+                <br />
+                --
+                <p> <a href="'. home_url() .'" >https://minshock.co.tz</a></p>
+            ';
+            $message = ob_get_contents();
+            ob_end_clean();
+            $mail = wp_mail($to, $subject, $message, $headers);
+            if($mail){
+                echo 'success';
+            }
+        }
+        die();
+    }
+
+    public static function sage_mail_content_type(){
+        return "text/html";
+    }
+}
+// This has to with issues on WordPress 4.6 i guess see more in the link below..
+// https://github.com/Automattic/vip-quickstart/issues/512#issue-165799484
+add_filter( 'wp_mail_from', __NAMESPACE__ . '\\sage_mail_from' );
+function sage_mail_from() {
+    return 'noreply@minshock.com';
+};

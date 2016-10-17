@@ -31,7 +31,7 @@
        </p><!--//phone-->
        <p class="email contact-info">
            <span class="intro"><?php _e( 'You can also email us', 'sage' ); ?></span>
-           <span class="info"><a href="mailto:info@wedesign.co.tz">info@wedesign.co.tz</a></span>
+           <span class="info"><a href="mailto:info@minshock.co.tz">info@minshock.co.tz</a></span>
        </p><!--//phone-->              
     </div><!--//container-->
 </section><!--//cta-section-->

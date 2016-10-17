@@ -2,19 +2,26 @@
   use Roots\Sage\Extras;
 
   $page_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID));
+$featuredImage = wp_get_attachment_image_src( get_option( 'page_for_posts' ) );
 ?>
 
 <div class="header-wrapper <?= Extras\container_class(); ?>" style="background:  #65758e url('<?= $page_image ?>') no-repeat 50% top;">
   <!-- ******HEADER****** --> 
   <header id="header" class="header navbar-fixed-top">  
       <div class="container">
-          <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>">
-              <?php
-                  $sage_logo = get_theme_mod( 'custom_logo' );
-                  $image = wp_get_attachment_image_src( $sage_logo , 'full' );
-              ?>
-              <img class="nav-logo" style="height: 100%; width: auto; margin-right: 5px;" src="<?= $image[0]; ?>" alt="<?php bloginfo('name'); ?>" >
-          </a>
+          <?php
+          if ( function_exists( 'the_custom_logo' ) ) {
+          ?>
+              <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>">
+                  <?php
+                      $sage_logo = get_theme_mod( 'custom_logo' );
+                      $image = wp_get_attachment_image_src( $sage_logo , 'full' );
+                  ?>
+                  <img class="nav-logo" style="height: 100%; width: auto; margin-right: 5px;" src="<?= $image[0]; ?>" alt="<?php bloginfo('name'); ?>">
+              </a>
+          <?php
+          }
+          ?>
           <h1 class="logo hidden-xs">
               <a href="<?= esc_url(home_url('/')); ?>"> <?php bloginfo('name'); ?> </a>
           </h1><!--//logo-->
@@ -27,22 +34,22 @@
                       <span class="icon-bar"></span>
                   </button><!--//nav-toggle-->
               </div><!--//navbar-header-->
-
+              <div id="navbar-collapse" class="navbar-collapse collapse">
                   <?php
                   if (has_nav_menu('primary_navigation')) :
                     wp_nav_menu( array(
                       'theme_location'    => 'primary_navigation',
                       'depth'             => 2,
-                      'container'         => 'div',
-                      'container_class'   => 'navbar-collapse collapse',
-                      'container_id'      => 'navbar-collapse',
+                      //'container'         => 'div',
+                      //'container_class'   => 'navbar-collapse collapse',
+                      //'container_id'      => 'navbar-collapse',
                       'menu_class'        => 'nav navbar-nav',
                       'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                       'walker'            => new wp_bootstrap_navwalker())
                     );
                   endif;
                   ?>
-
+              </div>
           </nav><!--//main-nav-->
       </div><!--//container-->
   </header><!--//header-->  
